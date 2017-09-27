@@ -1,6 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const { sequelize } = require('./models')
 const cors = require('cors')
+const config = require('./config/config')
 const morgan = require('morgan')
 
 const app = express()
@@ -12,9 +14,10 @@ app.get('/status', (req, res)=> {
 		message: 'hello!'
 	})
 })
-app.post('/register', (req,res) =>{
-	res.send({
-		message: `Hello ${req.body.email} Your user was registered, have fun!`
+require('./routes')(app)
+
+sequelize.sync()
+	.then(() =>{
+		app.listen(config.port)
+		console.log(`server started on port ${config.port}`)
 	})
-})
-app.listen(process.env.PORT || 8081)
