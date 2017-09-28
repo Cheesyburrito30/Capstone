@@ -1,19 +1,33 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <v-app>
+      <page-header />
+      <main>
+        <br>
+        <br>
+          <router-view></router-view>  
+      </main>
+    </v-app>    
   </div>
 </template>
 
 <script>
+import PageHeader from '@/components/header.vue'
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    PageHeader
+  }
 }
 </script>
 
 <style>
-body{
-  height:auto;
-  min-height: auto;
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
   background-image: url('./assets/concert.jpg');
     background-position: center center;
     -webkit-background-size: cover;
@@ -21,15 +35,5 @@ body{
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-.input-group--text-field input {
-  border-bottom: 1px solid black  
-}
+
 </style>
