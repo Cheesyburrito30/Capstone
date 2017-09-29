@@ -9,9 +9,9 @@
       </v-btn>
     </v-toolbar-items>
 
-  <!--   <v-toolbar-items>
-      <v-btn flat dark>Browse</v-btn>
-    </v-toolbar-items> -->
+    <v-toolbar-items>
+      <v-btn flat dark to="songs">Browse</v-btn>
+    </v-toolbar-items>
     <v-spacer />
     <v-toolbar-items
     v-if="!$store.state.isUserLoggedIn">
@@ -31,9 +31,8 @@
         Profile
       </v-btn>
     </v-toolbar-items>
-    <v-toolbar-items
-      v-if="$store.state.isUserLoggedIn">
-      <v-btn flat dark to="signout">
+    <v-toolbar-items @click="logout">
+      <v-btn v-if="$store.state.isUserLoggedIn" flat dark to="/" >
         Sign Out
       </v-btn>
     </v-toolbar-items>
@@ -42,7 +41,13 @@
 
 <script>
 export default {
-  
+  methods: {
+    logout(){
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+      this.$store.dispatch('isUserLoggedIn', false)
+    }
+  }
 }
 </script>
 
