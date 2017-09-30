@@ -4,8 +4,8 @@ module.exports =(sequelize, DataTypes) => {
 			artist: DataTypes.STRING,
             album: DataTypes.STRING,
             albumImageUrl: DataTypes.STRING,
+            genre: DataTypes.STRING,
             youtubeId: DataTypes.STRING,
-            //These are a lot of characters, and STRING is 255 char limit, so we set to TEXT
             lyrics: DataTypes.TEXT,
             tab: DataTypes.TEXT
     })

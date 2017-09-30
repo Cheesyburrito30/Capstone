@@ -1,8 +1,8 @@
 <template>
-<v-container fluid>
+<v-container>
     <h2>Create Song</h2>
     <v-layout row>
-        <v-flex xs5 offset-xs1>
+        <v-flex xs6 class="ml-2">
             <panel title="Create Song">
                 <form name="CreateSong">
                     <v-text-field
@@ -11,23 +11,34 @@
                         required
                         dark>
                     </v-text-field>
+
                     <v-text-field
                         label="Album"
                         v-model="album"
                         required
                         dark>
                     </v-text-field>
+
                     <v-text-field
                         label="Album Cover Link"
                         v-model="albumImageUrl"
                         dark>
                     </v-text-field>
+
                     <v-text-field
                         label="Artist"
                         v-model="artist"
                         required
                         dark>
                     </v-text-field>
+                    
+                    <v-text-field
+                        label="Genre"
+                        v-model="genre"
+                        required
+                        dark>
+                    </v-text-field>
+
                     <v-text-field
                         label="Youtube Key"
                         v-model="youtubeId"
@@ -35,15 +46,17 @@
                     </v-text-field>
                 </form>
                 <div v-html="error" class="error"></div>
-                <v-btn class="cyan" @click="post"  to="/songs" dark>Add Song</v-btn>
+                <div >
+                <v-btn class="cyan" @click="post" dark>Add Song</v-btn>
+                </div>
             </panel>
         </v-flex>
-        <v-layout column>
-            <v-flex xs9 offset-xs1>
+            <v-flex xs6 class="ml-2">
                 <panel title="Tabs">
                     <v-text-field
                         label="Tabs"
                         v-model="tab"
+                        rows="7"
                         multi-line
                         required
                         dark>
@@ -54,13 +67,12 @@
                     <v-text-field
                         label="Lyrics"
                         v-model="lyrics"
+                        rows="6"
                         multi-line
-                        required
                         dark>
                     </v-text-field>
                 </panel>
             </v-flex>
-        </v-layout>
     </v-layout>
 </v-container>
 </template>
@@ -74,13 +86,14 @@ export default {
     },
     data () {
         return{
-            title: '',
-            artist: '',
-            youtubeId: '',
-            albumImageUrl: '',
-            album: '',
-            lyrics:'',
-            tab: '',
+            title: null,
+            artist: null,
+            youtubeId: null,
+            albumImageUrl: null,
+            album: null,
+            lyrics:null,
+            tab: null,
+            genre: null,
             error: null
         }
     },
@@ -93,9 +106,13 @@ export default {
                         artist: this.artist,
                         album: this.album,
                         albumImageUrl: this.albumImageUrl,
+                        genre: this.genre,
                         youtubeId: this.youtubeId,
                         lyrics:this.lyrics,
                         tab: this.tab,
+                })
+                this.$router.push({
+                    name: "songs"
                 })
             }catch(error){
                 this.error = error.response.data.error

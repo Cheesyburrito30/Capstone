@@ -46,7 +46,10 @@ export default {
       try{
         const response = await authenticationservice.register({ email: this.email, password: this.password})
         this.$store.dispatch('setToken', response.data.token)
-        this.$store.dispatch('setUser', response.data.user)
+		  this.$store.dispatch('setUser', response.data.user)
+		  this.$router.push({
+			  name: "songs"
+		  })
       }catch(error) {
         this.error = error.response.data.error
       }

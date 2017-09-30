@@ -10,24 +10,30 @@
     </v-toolbar-items>
 
     <v-toolbar-items>
-      <v-btn flat dark to="songs">Browse</v-btn>
+      <v-btn flat dark to="/songs">Browse</v-btn>
     </v-toolbar-items>
     <v-spacer />
     <v-toolbar-items
     v-if="!$store.state.isUserLoggedIn">
-        <v-btn flat dark to="register">
+        <v-btn flat dark to="/register">
           Sign Up
         </v-btn>
     </v-toolbar-items>
     <v-toolbar-items
       v-if="!$store.state.isUserLoggedIn">
-      <v-btn flat dark to="login">
+      <v-btn flat dark to="/login">
         Sign In
+      </v-btn>
+    </v-toolbar-items>
+	 <v-toolbar-items
+      v-if="$store.state.isUserLoggedIn">
+      <v-btn flat dark to="/songs/create">
+        Add Tabs
       </v-btn>
     </v-toolbar-items>
     <v-toolbar-items
       v-if="$store.state.isUserLoggedIn">
-      <v-btn flat dark to="Profile">
+      <v-btn flat dark to="/Profile">
         Profile
       </v-btn>
     </v-toolbar-items>
