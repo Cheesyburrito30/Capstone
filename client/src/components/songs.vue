@@ -4,11 +4,20 @@
         
         <panel title="Songs">
             <div v-for="song in songs"
-            :key="song.id">
-            {{song.title}}-
-            {{song.artist}}-
-            {{song.album}}  
-            </div>
+					:key="song.id">
+						{{song.title}}-
+						{{song.artist}}-
+						{{song.album}}  
+					<v-btn dark
+						:to="{
+							name: 'song',
+							params: {
+								songId: song.id
+							}
+						}">
+						View
+					</v-btn>
+				</div>
         </panel>
     </v-flex>
   </v-layout>
@@ -28,7 +37,7 @@ export default {
     },
     async mounted (){
         this.songs = (await SongsService.index()).data
-    }
+	 }
 }
 </script>
 
