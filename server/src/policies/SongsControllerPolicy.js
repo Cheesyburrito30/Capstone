@@ -5,14 +5,15 @@ module.exports= {
          title: Joi.string().required(),
          artist: Joi.string().required(),
          album: Joi.string().required(),
-         albumImageUrl: Joi.string(),
+         albumImageUrl: Joi.any().allow(null),
          genre: Joi.string().required(),
-         youtubeId: Joi.string(),
+         youtubeId: Joi.any().allow(null),
          lyrics: Joi.string().required(),
-         tab:  Joi.string()
+         tab: Joi.any().allow(null)
 		}
-		const {error, value} = Joi.validate(req.body.schema)
+		const {error, value} = Joi.validate(req.body, schema)
 		if (error) {
+			// console.log(req.body)
 			switch(error.details[0].context.key){
 				case 'title':
 					res.status(400).send({
@@ -40,6 +41,7 @@ module.exports= {
 					})
 					break
 				default:
+					console.log(error.details[0].context.key)
 					res.status(400).send({
 						error:'invalid song info'
 					})
