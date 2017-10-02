@@ -78,6 +78,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import SongsService from '@/services/SongsService'
 export default {
     data () {
@@ -92,10 +93,17 @@ export default {
             genre: null,
             error: null
         }
-    },
+	 },
+	 computed: {
+		...mapState([
+			'user'
+		])
+	},
     methods: {
+		 
         async post(){
             try{
+					const userId = this.user.id
                 const response = await 
                     SongsService.post({
                         title: this.title,
@@ -105,8 +113,10 @@ export default {
                         genre: this.genre,
                         youtubeId: this.youtubeId,
                         lyrics:this.lyrics,
-                        tab: this.tab,
-                })
+								tab: this.tab,
+								madeBy: userId
+					 })
+					 console.log(response)
                 this.$router.push({
                     name: "songs"
                 })
