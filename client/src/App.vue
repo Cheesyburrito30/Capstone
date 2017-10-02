@@ -34,10 +34,10 @@ export default {
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
-  height: 100%;
-  min-height: 100%;
+  /* height: 100%;
+  min-height: 100%; */
 }
 .application, .application>main>.container{
-  min-height: 100%;
+  /* min-height: 100%; */
 }
 </style>

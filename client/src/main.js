@@ -13,6 +13,7 @@ Vue.use(Vuetify)
 sync(store, router) 
 /* eslint-disable no-new */
 new Vue({
+	//which element is on the page, this is root el. set to ID on div inside of index.html
   el: '#app',
   router,
   store,
