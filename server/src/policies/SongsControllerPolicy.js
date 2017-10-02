@@ -9,7 +9,8 @@ module.exports= {
          genre: Joi.string().required(),
          youtubeId: Joi.any().allow(null),
          lyrics: Joi.string().required(),
-         tab: Joi.any().allow(null)
+			tab: Joi.any().allow(null),
+			madeBy: Joi.any().allow(null)
 		}
 		const {error, value} = Joi.validate(req.body, schema)
 		if (error) {

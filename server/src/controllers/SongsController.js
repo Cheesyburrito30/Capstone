@@ -47,5 +47,19 @@ module.exports = {
 				error: 'an error has occured trying to fetch the song'
 			})
 		}
+	},
+	async userMade (req, res) {
+		try {
+			console.log(req.params)
+			console.log(req.params.userId)
+			const songs = await Song.findAll({
+				where: {
+					madeBy: req.params.userId
+				}
+			})
+			res.send(songs)
+		} catch(err) {
+			error: "You suck"
+		}
 	}
 }

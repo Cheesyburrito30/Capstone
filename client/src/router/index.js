@@ -6,15 +6,11 @@ import Login from '@/components/login'
 import Songs from '@/components/songs'
 import CreateSong from '@/components/CreateSong'
 import ViewSong from '@/components/ViewSong'
+import profile from '@/components/profile'
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path: '/',
-      name: 'Hello',
-      component: Hello
-    },
     {
     	path:'/register',
     	name: 'register',
@@ -39,6 +35,11 @@ export default new Router({
 		 path:'/songs/:songId',
 		 name: 'song',
 		 component: ViewSong
+	 },
+	 {
+		 path: '/profile',
+		 name: 'profile',
+		 component: profile
 	 },
 	 {
 		 path: '*',

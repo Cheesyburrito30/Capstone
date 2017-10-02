@@ -13,5 +13,8 @@ export default {
 	},
 	show(songId){
 		return api().get(`songs/${songId}`)
+	},
+	userMade(userId){
+		return api().get(`songs/user/${userId}`)
 	}
 }

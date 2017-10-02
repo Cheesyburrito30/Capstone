@@ -9,6 +9,7 @@
                         label="Title"
                         v-model="title"
                         required
+								:rules="[required]"
                         dark>
                     </v-text-field>
 
@@ -16,6 +17,8 @@
                         label="Album"
                         v-model="album"
                         required
+								:rules="[required]"
+								
                         dark>
                     </v-text-field>
 
@@ -29,12 +32,14 @@
                         label="Artist"
                         v-model="artist"
                         required
+								:rules="[required]"								
                         dark>
                     </v-text-field>
                     
                     <v-text-field
                         label="Genre"
                         v-model="genre"
+								:rules="[required]"
                         required
                         dark>
                     </v-text-field>
@@ -56,6 +61,7 @@
                     <v-text-field
                         label="Tabs"
                         v-model="tab"
+								:rules="[required]"
                         rows="7"
                         multi-line
                         required
@@ -68,6 +74,8 @@
                         label="Lyrics"
                         v-model="lyrics"
                         rows="6"
+								:rules="[required]"
+								required
                         multi-line
                         dark>
                     </v-text-field>
