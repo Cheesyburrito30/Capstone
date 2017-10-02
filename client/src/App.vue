@@ -3,9 +3,11 @@
     <v-app>
       <page-header />
       <main>
-        <br>
-        <br>
-          <router-view></router-view>  
+      	<br/>
+      	<br/>
+          <router-view></router-view>
+			<br/>
+			<br/>
       </main>
     </v-app>    
   </div>
@@ -22,6 +24,11 @@ export default {
 </script>
 
 <style>
+@media only screen and (max-width: 500px) {
+	#app{
+		font-size: 3em
+	}
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -37,7 +44,8 @@ export default {
   /* height: 100%;
   min-height: 100%; */
 }
-.application, .application>main>.container{
-  /* min-height: 100%; */
+
+.danger-alert {
+	color: red;
 }
 </style>

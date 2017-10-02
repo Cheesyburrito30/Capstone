@@ -52,7 +52,7 @@ export default {
       this.$store.dispatch('setToken', null)
       this.$store.dispatch('setUser', null)
 		this.$store.dispatch('isUserLoggedIn', false)
-		this.$router.push("/")
+		this.$router.push("/songs")
     }
   }
 }

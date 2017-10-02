@@ -17,7 +17,7 @@
               ></v-text-field>
           </form>
           <br>
-          <div v-html="error" class="error"></div>
+          <div v-html="error" class="danger-alert"></div>
           <br>
           <v-btn
             class="cyan"
@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import Panel from '@/components/panel'
 import authenticationservice from '@/services/authenticationservice'
 export default {
   data () {
@@ -54,15 +53,10 @@ export default {
         this.error = error.response.data.error
       }
     }
-  },
-  components: {
-    Panel
   }
 }
 </script>
 
 <style scoped>
-.error {
-  color: red;
-}
+
 </style>

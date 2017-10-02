@@ -39,6 +39,10 @@ export default new Router({
 		 path:'/songs/:songId',
 		 name: 'song',
 		 component: ViewSong
+	 },
+	 {
+		 path: '*',
+		 redirect: 'songs'
 	 }
   ]
 })

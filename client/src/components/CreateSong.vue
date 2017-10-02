@@ -45,7 +45,7 @@
                         dark>
                     </v-text-field>
                 </form>
-                <div v-html="error" class="error"></div>
+                <div v-html="error" class="danger-alert"></div>
                 <div >
                 <v-btn class="cyan" @click="post" dark>Add Song</v-btn>
                 </div>
@@ -78,12 +78,8 @@
 </template>
 
 <script>
-import Panel from '@/components/panel'
 import SongsService from '@/services/SongsService'
 export default {
-    components: {
-        Panel
-    },
     data () {
         return{
             title: null,

@@ -1,56 +1,46 @@
 <template>
-<v-layout column>
-	<v-flex xs6 offset-xs3>
-	  <panel title="Songs">
-            <div v-for="song in songs"
-					:key="song.id">
-						{{song.title}}-
-						{{song.artist}}-
-						{{song.album}}  
-					<v-btn dark
-						:to="{
-							name: 'song',
-							params: {
-								songId: song.id
-							}
-						}">
-						View
-					</v-btn>
-				</div>
-        </panel>
-	</v-flex>
-</v-layout>
+  <panel title="search">
+		<v-text-field 
+			label="Search by Title, Artist, or Album" 
+			v-model="search" dark>
+		</v-text-field>
+  </panel>
 </template>
 
 <script>
-import {mapState} from 'vuex'
-import Panel from '@/components/panel'
-import SongsService from '@/services/SongsService'
+import _ from 'lodash'
 
 export default {
-	components: {
-		Panel
-	},
 	data () {
 		return {
-			songs: {},
+			search: ''
 		}
 	},
-	computed: {
-		//vuex, will pull the state obj, and find the route and give us "this.route"
-		...mapState([
-			'route'
-		])
-	},
-	async mounted (){
-		const input = this.route.params.input
-		console.log(input)
-		this.songs = (await SongsService.search(input)).data
-		console.log(this.songs)
-	 }
+	//This updates the link as stuff is entered inside of search bar
+	watch: {
+		//this is a lodash thing, making it so that we don't send queries to the DB every single keystroke.
+		search: _.debounce(async function (value){
+			const route = {
+				name: 'songs'
+			}
+			if(this.search !== '') {
+				route.query = {
+					search: this.search
+				}
+			}
+			this.$router.push(route)
+		}, 700),
+		//this makes the search bar be what the route is
+		'$route.query.search': {
+			immediate: true, 
+			handler(value) {
+				this.search = value
+			}
+		}
+	}
 }
 </script>
 
-<style>
+<style scoped >
 
 </style>
