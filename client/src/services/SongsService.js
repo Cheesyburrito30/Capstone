@@ -16,5 +16,8 @@ export default {
 	},
 	userMade(userId){
 		return api().get(`songs/user/${userId}`)
+	},
+	updateSong(song){
+		return api().put(`songs/${song.id}`, song)
 	}
 }

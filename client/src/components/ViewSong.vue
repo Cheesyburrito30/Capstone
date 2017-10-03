@@ -17,6 +17,19 @@
 				<v-card-text class="mt-1 text-xs-left tab">{{song.tab}}</v-card-text>
 				</v-card>
 				</v-dialog>
+				<v-btn
+					dark
+					class="cyan"
+					:to="{
+						name: 'song-edit', 
+						params () {
+						return {
+							songId: song.id
+						}
+						}
+					}">
+					Edit
+				</v-btn>
 			</v-flex>
 	 	</v-layout>
 		</panel>
